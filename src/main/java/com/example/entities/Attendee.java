@@ -43,11 +43,11 @@ public class Attendee implements Serializable {
     @NotEmpty(message = "The surname cannot be empty")
     private String surname;
 
-    @Size(min = 5, max = 9, message = "the number of characters of this id cannot be less than 5 or more than 9")
+   // @Size(min = 5, max = 9, message = "the number of characters of this id cannot be less than 5 or more than 9")
     private int globalId;
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    // @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     private Event event;
 
     private String mail;
