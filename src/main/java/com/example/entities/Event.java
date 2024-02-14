@@ -29,10 +29,12 @@ public class Event implements Serializable {
     @Id
     @GeneratedValue
     private int id;
+
     @NotNull(message = "El nombre no puede ser nulo")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "No ")
     private String title;
 
+    @NotNull
     private Target target;
 
     private String description;
@@ -50,6 +52,8 @@ public class Event implements Serializable {
     // A preguntar pero de momento lo pongo como String
 
     private String place;
+
+    
 
 
 
