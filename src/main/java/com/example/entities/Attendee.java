@@ -42,7 +42,7 @@ public class Attendee implements Serializable {
     private int globalId;
 
 
-    // @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    //@ManyToMany()
     private Event event;
 
     private String mail;
