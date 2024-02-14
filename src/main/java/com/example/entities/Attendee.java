@@ -39,8 +39,8 @@ public class Attendee implements Serializable {
     @NotEmpty(message = "The name cannot be empty")
     private String name;
 
-    @NotNull(message = "The surname of the attendee cannot be null")
-    @NotEmpty(message = "The surname cannot be empty")
+    // @NotNull(message = "The surname of the attendee cannot be null")
+    // @NotEmpty(message = "The surname cannot be empty")
     private String surname;
 
    // @Size(min = 5, max = 9, message = "the number of characters of this id cannot be less than 5 or more than 9")
