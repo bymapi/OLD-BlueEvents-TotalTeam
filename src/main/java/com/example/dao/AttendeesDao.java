@@ -1,6 +1,12 @@
 package com.example.dao;
 
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.example.entities.Attendee;
 
@@ -8,18 +14,19 @@ import com.example.entities.Attendee;
 
 public interface AttendeesDao extends JpaRepository<Attendee,Integer> {
 
-    /**
-     * Vamos a utilizar métodos personalizados,
-   
-     * 
-     * 1. Recupera los asistentes paginados, es decir, de 10 en 10, de 20 en 20, etc
-     * 2. Recupera los asistentes ordenados, sin paginación
-     * 3. Dado el Global ID de un asistente recuperarle 
-     * 
-     * Para ello vamos a utilizar el lenguaje HQL (Hybernate Query Language), es muy similar a SQL pero
-     * lo que se consulta son las entidades, no las tablas.
-     * 
-     * Y no se pueden utilizar consultas de SQL nativas porque no soportan la paginacion y el ordenamiento
-     */ 
+
+        @Query(value = "select a from Attendee a left join fetch a.event",
+        countQuery = "select count(a) from Attendee a left join a.event")
+        public Page<Attendee> findAll(Pageable pageable);
+
+        // Método que ordena los asistentes sin paginación 
+
+        @Query(value = "select a from Attendee a left join fetch a.event")
+        public List<Attendee> findAll(Sort sort);
+
+        // Método que recupera el asistente con su evento
+
+        @Query(value = "select a from Attendee a left join fetch a.event where a.id = :id")
+        public Attendee findById(int id);
 
 }
