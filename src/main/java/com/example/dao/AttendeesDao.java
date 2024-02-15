@@ -1,6 +1,12 @@
 package com.example.dao;
 
-public interface AttendeesDao {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.entities.Attendee;
+
+
+
+public interface AttendeesDao extends JpaRepository<Attendee,Integer> {
 
    
 
