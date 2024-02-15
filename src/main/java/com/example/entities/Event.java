@@ -3,9 +3,7 @@ package com.example.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -54,6 +52,8 @@ public class Event implements Serializable {
     @NotNull
     private Target target;
 
+    @NotNull(message = "Must not be empty")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Write alphabetic letters only ")
     private String description;
 
     @NotNull(message = "Must not be empty")
@@ -65,15 +65,19 @@ public class Event implements Serializable {
     private LocalDate endDate;
 
     @NotNull(message = "Must not be empty")
-    @DateTimeFormat()
+    @DateTimeFormat(pattern = "HH:mm")
     private LocalTime startTime;
 
+    @NotNull(message = "Must not be empty")
+    @DateTimeFormat(pattern = "HH:mm")
     private LocalTime endTime;
 
+
+    @NotNull(message = "Must not be empty")
     private Mode mode;
 
     // A preguntar pero de momento lo pongo como String
-
+    @NotNull(message = "Must not be empty")
     private String place;
 
      @ManyToMany(fetch = FetchType.LAZY,
@@ -81,7 +85,7 @@ public class Event implements Serializable {
           CascadeType.PERSIST,
           CascadeType.MERGE
       },
-      
+
       mappedBy = "events" )
     @JsonIgnore
     //private Set<Attendee> attendees = new HashSet<>();
