@@ -1,6 +1,9 @@
 package com.example.dao;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.example.entities.Attendee;
 
@@ -21,5 +24,19 @@ public interface AttendeesDao extends JpaRepository<Attendee,Integer> {
      * 
      * Y no se pueden utilizar consultas de SQL nativas porque no soportan la paginacion y el ordenamiento
      */ 
+
+        @Query(value = "select a from Attendee a left join fetch e.event",
+        countQuery = "select count(a) from Attendee p left join e.event")
+        public Page<Attendee> findAll(Pageable pageable);
+
+        // Método que ordena los productos sin paginación 
+
+        // @Query(value = "select p from Producto p left join fetch p.presentacion")
+        // public List<Producto> findAll(Sort sort);
+
+        // Método que recupera el producto con su descripción
+
+        // @Query(value = "select p from Producto p left join fetch p.presentacion where p.id = :id")
+        // public Producto findById(int id);
 
 }
