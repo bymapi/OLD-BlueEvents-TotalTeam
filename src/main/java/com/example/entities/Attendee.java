@@ -69,7 +69,7 @@ public class Attendee implements Serializable {
     joinColumns = { @JoinColumn(name = "attendee_id") },
     inverseJoinColumns = { @JoinColumn(name = "event_id") })
 
-    //private Set<Event> events = new HashSet<>();
+
     private List<Event> events;
 
     private String mail;
