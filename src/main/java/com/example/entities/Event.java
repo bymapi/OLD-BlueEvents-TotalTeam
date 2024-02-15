@@ -3,10 +3,22 @@ package com.example.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -20,6 +32,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "events")
 
 public class Event implements Serializable {
 
@@ -27,8 +40,11 @@ public class Event implements Serializable {
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @UniqueElements
+    private int idGlobal;
 
     @NotNull(message = "El nombre no puede ser nulo")
     @Pattern(regexp = "^[a-zA-Z]+$", message = "No ")
@@ -52,6 +68,16 @@ public class Event implements Serializable {
     // A preguntar pero de momento lo pongo como String
 
     private String place;
+
+     @ManyToMany(fetch = FetchType.LAZY,
+      cascade = {
+          CascadeType.PERSIST,
+          CascadeType.MERGE
+      },
+      mappedBy = "events" )
+    @JsonIgnore
+    //private Set<Attendee> attendees = new HashSet<>();
+    private List<Attendee> attendees;
 
     
 
