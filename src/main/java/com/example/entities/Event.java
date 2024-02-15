@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -46,8 +47,8 @@ public class Event implements Serializable {
     @UniqueElements
     private int idGlobal;
 
-    @NotNull(message = "El nombre no puede ser nulo")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "No ")
+    @NotNull(message = "Must not be empty")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Write alphabetic letters only ")
     private String title;
 
     @NotNull
@@ -55,10 +56,16 @@ public class Event implements Serializable {
 
     private String description;
 
+    @NotNull(message = "Must not be empty")
+    @DateTimeFormat(pattern = "dd-MM-YY")
     private LocalDate startDate;
 
+    @NotNull(message = "Must not be empty")
+    @DateTimeFormat(pattern = "dd-MM-YY")
     private LocalDate endDate;
 
+    @NotNull(message = "Must not be empty")
+    @DateTimeFormat()
     private LocalTime startTime;
 
     private LocalTime endTime;
@@ -74,6 +81,7 @@ public class Event implements Serializable {
           CascadeType.PERSIST,
           CascadeType.MERGE
       },
+      
       mappedBy = "events" )
     @JsonIgnore
     //private Set<Attendee> attendees = new HashSet<>();
