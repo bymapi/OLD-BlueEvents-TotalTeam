@@ -1,6 +1,7 @@
 package com.example.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,5 +29,7 @@ public interface AttendeesDao extends JpaRepository<Attendee,Integer> {
 
         @Query(value = "select a from Attendee a left join fetch a.event where a.id = :id")
         public Attendee findById(int id);
+
+        
 
 }
