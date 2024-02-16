@@ -2,7 +2,7 @@ package com.example.helpers;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.Month;
+
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +26,6 @@ public class LoadSampleData {
         return datos ->{
 
             eventsServices.save(Event.builder()
-            .idGlobal(0)
             .title("French for non-native speakers")
             .target(Target.INTERNS)
             .description("French classes, level B2")
@@ -40,7 +39,6 @@ public class LoadSampleData {
             .build());
 
             eventsServices.save(Event.builder()
-            .idGlobal(0)
             .title("Pets and owners get-together")
             .target(Target.BOOTCAMP)
             .description("Social event aming to get to know each other and make new friends, with two or even more legs")
@@ -54,7 +52,6 @@ public class LoadSampleData {
             .build());
 
             eventsServices.save(Event.builder()
-            .idGlobal(0)
             .title("Hackathon")
             .target(Target.INTERNS)
             .description("Hackathon, first edition")
