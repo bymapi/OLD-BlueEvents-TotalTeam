@@ -21,7 +21,7 @@ public interface EventsDao extends JpaRepository<Event,Integer>{
 
     public Page<Event> findAll(Pageable pageable);
 
-    @Query(value = "select e from Event e left join fetch e.event")
+    @Query(value = "select e from Event e left join fetch e.attendee")
     public List<Event> findAll(Sort sort);
 
     // Metodo 3
