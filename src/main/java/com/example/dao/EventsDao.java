@@ -28,6 +28,9 @@ public interface EventsDao extends JpaRepository<Event,Integer>{
     @Query(value = "select e from Event e left join fetch e.attendee where e.id = :id")
     public Event findById(int id);
 
+    
+    
+
 
 
 
