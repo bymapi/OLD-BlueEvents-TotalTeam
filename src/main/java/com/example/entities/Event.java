@@ -58,11 +58,11 @@ public class Event implements Serializable {
     private String description;
 
     @NotNull(message = "Must not be empty")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd-MM-YYYY")
     private LocalDate startDate;
 
     @NotNull(message = "Must not be empty")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd-MM-YYYY")
     private LocalDate endDate;
 
     @NotNull(message = "Must not be empty")
