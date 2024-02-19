@@ -17,7 +17,7 @@
 // public class EventsController {
 
    
-//     private final eventRepository eventRepository;
+//     private final EventRepository eventRepository;
 
 //     public ResponseEntity<List<Event>> getAllEvents(@RequestParam(required = false) String title) {
 //         List<Event> events = new ArrayList<Event>();
