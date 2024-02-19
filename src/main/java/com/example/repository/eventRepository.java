@@ -9,4 +9,5 @@ import com.example.entities.Event;
 public interface eventRepository extends JpaRepository<Event, Integer> {
 
     List<Event> findEventsByAttendeesId(int AttendeeId);
+    
 }

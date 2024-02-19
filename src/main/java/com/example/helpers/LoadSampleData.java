@@ -3,6 +3,7 @@ package com.example.helpers;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,12 +26,11 @@ public class LoadSampleData {
         return datos ->{
 
             eventsServices.save(Event.builder()
-            .idGlobal(0)
             .title("French for non-native speakers")
             .target(Target.INTERNS)
             .description("French classes, level B2")
-            .startDate(LocalDate.of(24, 03, 10))
-            .endDate(LocalDate.of(24, 03, 10))
+            .startDate(LocalDate.of(2024, 03, 10))
+            .endDate(LocalDate.of(2024, 03, 10))
             .startTime(LocalTime.of(10, 30))
             .endTime(LocalTime.of(12, 30))
             .mode(Mode.ONLINE)
@@ -39,12 +39,11 @@ public class LoadSampleData {
             .build());
 
             eventsServices.save(Event.builder()
-            .idGlobal(0)
             .title("Pets and owners get-together")
             .target(Target.BOOTCAMP)
             .description("Social event aming to get to know each other and make new friends, with two or even more legs")
-            .startDate(LocalDate.of(24, 04, 07))
-            .endDate(LocalDate.of(24, 04, 07))
+            .startDate(LocalDate.of(2024, 04, 07))
+            .endDate(LocalDate.of(2024, 04, 07))
             .startTime(LocalTime.of(17, 10))
             .endTime(LocalTime.of(18, 15))
             .mode(Mode.PRESENTIAL)
@@ -53,12 +52,11 @@ public class LoadSampleData {
             .build());
 
             eventsServices.save(Event.builder()
-            .idGlobal(0)
             .title("Hackathon")
             .target(Target.INTERNS)
             .description("Hackathon, first edition")
-            .startDate(LocalDate.of(24, 05, 17))
-            .endDate(LocalDate.of(24, 05, 20))
+            .startDate(LocalDate.of(2024, 05, 17))
+            .endDate(LocalDate.of(2024, 05, 14))
             .startTime(LocalTime.of(9, 00))
             .endTime(LocalTime.of(17, 30))
             .mode(Mode.MIXED)
