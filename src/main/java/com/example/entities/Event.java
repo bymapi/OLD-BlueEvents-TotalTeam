@@ -3,7 +3,6 @@ package com.example.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.hibernate.validator.constraints.UniqueElements;
@@ -58,11 +57,11 @@ public class Event implements Serializable {
     private String description;
 
     @NotNull(message = "Must not be empty")
-    @DateTimeFormat(pattern = "dd-MM-YYYY")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
     @NotNull(message = "Must not be empty")
-    @DateTimeFormat(pattern = "dd-MM-YYYY")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
     @NotNull(message = "Must not be empty")
